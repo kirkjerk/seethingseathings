@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/seethings/Scripts/UserInput.cs">
     <Files>
-      <File FileName="Assets/seethings/Scripts/MakeWorld.cs" Line="9" Column="1" />
-      <File FileName="Assets/seethings/Scripts/UserInput.cs" Line="15" Column="59" />
+      <File FileName="Assets/seethings/Scripts/MakeWorld.cs" Line="11" Column="28" />
+      <File FileName="Assets/seethings/Scripts/UserInput.cs" Line="13" Column="27" />
+      <File FileName="Assets/seethings/Scripts/FishGuts.cs" Line="59" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

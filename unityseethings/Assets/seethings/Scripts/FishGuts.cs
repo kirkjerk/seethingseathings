@@ -15,9 +15,11 @@ public class FishGuts : MonoBehaviour {
 
 	public Transform target = null;
 
+	public FishViz myFishViz;
+
 	// Use this for initialization
 	void Start () {
-
+		myFishViz = this.gameObject.GetComponentInChildren<FishViz> ();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +36,7 @@ public class FishGuts : MonoBehaviour {
 			Vector3 deltaFromTarget = getTargetLocation() - this.transform.position;
 			Vector3 desiredKick = deltaFromTarget *  KICKFORCE;
 			this.rigidbody.AddForce(desiredKick,ForceMode.VelocityChange);
+			myFishViz.setFacing(desiredKick);
 		} 
 	}
 	
@@ -58,6 +61,7 @@ public class FishGuts : MonoBehaviour {
 		//vectorAwayFromClick /= distanceFromClick;
 		vectorAwayFromClick *= STRENGTH_OF_SCARE / distanceFromClick;
 		this.rigidbody.AddForce(vectorAwayFromClick,ForceMode.VelocityChange);
+		myFishViz.setFacing(vectorAwayFromClick);
 	}
 
 	

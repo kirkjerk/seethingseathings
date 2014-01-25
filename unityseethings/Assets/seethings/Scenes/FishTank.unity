@@ -145,6 +145,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1327651717}
   - 114: {fileID: 1327651716}
+  - 114: {fileID: 1327651718}
   m_Layer: 0
   m_Name: WorldStarter
   m_TagString: Untagged
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc30be4e560845289b4456e0003df29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NUM_FISH_START: 1000
+  NUM_FISH_START: 6
   MAX_START_LOC: 50
   fishPrefab: {fileID: 11400000, guid: bce6f112e59b440e685bb66d7a873dd1, type: 2}
 --- !u!4 &1327651717
@@ -177,6 +178,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1327651718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1327651715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b69a0beaa0054bf49ae56e9a8fe1a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishPrefab: {fileID: 11400000, guid: bce6f112e59b440e685bb66d7a873dd1, type: 2}
 --- !u!1 &1493773137
 GameObject:
   m_ObjectHideFlags: 0

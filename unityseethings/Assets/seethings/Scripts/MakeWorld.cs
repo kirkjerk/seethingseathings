@@ -7,18 +7,19 @@ public class MakeWorld : MonoBehaviour {
 	public int NUM_FISH_START = 40;
 	public float MAX_START_LOC = 200;
 
-	public FishMove fishPrefab;
+
+	public FishGuts fishPrefab;
 
 	// Use this for initialization
 	void Start () {
 
-		List<FishMove> fishAdded = new List<FishMove> ();
+		List<FishGuts> fishAdded = new List<FishGuts> ();
 
-		FishMove firstFish = (FishMove)Instantiate(fishPrefab);
+		FishGuts firstFish = (FishGuts)Instantiate(fishPrefab);
 		fishAdded.Add (firstFish);
 
 		for (int i = 0; i < NUM_FISH_START - 1; i++) {
-			FishMove newFish = (FishMove)Instantiate(fishPrefab);
+			FishGuts newFish = (FishGuts)Instantiate(fishPrefab);
 
 
 			int randomIndex = Random.Range(0,fishAdded.Count);
@@ -26,7 +27,7 @@ public class MakeWorld : MonoBehaviour {
 
 			newFish.transform.position = new Vector3(Random.Range(-MAX_START_LOC,MAX_START_LOC),
 			                                             Random.Range(-MAX_START_LOC,MAX_START_LOC),
-			                                             Random.Range(-MAX_START_LOC,MAX_START_LOC));
+			                                            0);
 			fishAdded.Add(newFish);
 		}
 	}

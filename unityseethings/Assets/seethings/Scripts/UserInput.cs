@@ -10,7 +10,7 @@ public class UserInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton (0)) {
 			Ray mouseClickRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 			FishGuts[] allFishes = GameObject.FindObjectsOfType<FishGuts>();
 			foreach(FishGuts fish in allFishes){

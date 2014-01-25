@@ -10,7 +10,9 @@ public class FishGuts : MonoBehaviour {
 	public float KICKFORCE = .04f;
 	public float PERCENTCHANCETOKICK = 10;
 	public float MAXSPEEDTOTRIGGERKICK = 1;
-	
+
+	public float STRENGTH_OF_SCARE = 10;
+
 	public Transform target = null;
 
 	// Use this for initialization
@@ -48,6 +50,13 @@ public class FishGuts : MonoBehaviour {
 		//Ray mouseClickRay = Camera.main.ScreenPointToRay( Input.mousePosition );
 		Vector3 ray_point = FindClosestPointOnRay(mouseClickRay, transform.position);
 		Vector3 vectorAwayFromClick = this.transform.position - ray_point;
+
+		vectorAwayFromClick.Normalize ();
+
+		float distanceFromClick = (ray_point - this.transform.position).magnitude;
+
+		//vectorAwayFromClick /= distanceFromClick;
+		vectorAwayFromClick *= STRENGTH_OF_SCARE / distanceFromClick;
 		this.rigidbody.AddForce(vectorAwayFromClick,ForceMode.VelocityChange);
 	}
 

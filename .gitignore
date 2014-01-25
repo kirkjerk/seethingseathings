@@ -1,2 +1,5 @@
 unityseethings/Library/*
 unityseethings/Temp/*
+*csproj
+*unityproj
+*.sln

@@ -13,15 +13,26 @@ public class FishGuts : MonoBehaviour {
 
 	public float STRENGTH_OF_SCARE = 10;
 
+	public float RANDOM_GOAL_BOUNDS = 50;
+
 	public Transform target = null;
 
 	public FishViz myFishViz;
 
+	protected Vector3 randomGoal;
+
 	// Use this for initialization
 	void Start () {
 		myFishViz = this.gameObject.GetComponentInChildren<FishViz> ();
+		setGoalRandomly ();
 	}
-	
+
+	void setGoalRandomly(){
+			randomGoal = new Vector3 (Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS),
+		                          Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS),
+		                          Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS));
+		}
+
 	// Update is called once per frame
 	void Update () {
 		checkKick ();
@@ -36,13 +47,13 @@ public class FishGuts : MonoBehaviour {
 			Vector3 deltaFromTarget = getTargetLocation() - this.transform.position;
 			Vector3 desiredKick = deltaFromTarget *  KICKFORCE;
 			this.rigidbody.AddForce(desiredKick,ForceMode.VelocityChange);
-			myFishViz.setFacing(desiredKick);
+			if(myFishViz) myFishViz.setFacing(desiredKick);
 		} 
 	}
 	
 	Vector3 getTargetLocation(){
 		if(target == null){
-			return Vector3.zero;
+			return randomGoal;
 		}   else {
 			return target.position;
 		}
@@ -61,7 +72,9 @@ public class FishGuts : MonoBehaviour {
 		//vectorAwayFromClick /= distanceFromClick;
 		vectorAwayFromClick *= STRENGTH_OF_SCARE / distanceFromClick;
 		this.rigidbody.AddForce(vectorAwayFromClick,ForceMode.VelocityChange);
-		myFishViz.setFacing(vectorAwayFromClick);
+		if(myFishViz)myFishViz.setFacing(vectorAwayFromClick);
+
+		setGoalRandomly ();
 	}
 
 	

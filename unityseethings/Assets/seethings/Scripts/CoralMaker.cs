@@ -18,8 +18,15 @@ public class CoralMaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Vector3 pos = this.transform.position;
+		if (Terrain.activeTerrain)
+			pos.y = Terrain.activeTerrain.SampleHeight(this.transform.position)+Terrain.activeTerrain.transform.position.y;
+
+		this.transform.position = pos;
 		AddPiece(this.transform);
 		++TiersCreated;
+
+
 	}
 	
 	// Update is called once per frame

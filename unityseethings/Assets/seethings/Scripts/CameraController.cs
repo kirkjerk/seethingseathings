@@ -3,11 +3,12 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 	public Transform target ;
-	public float distance = 10.0f;
+	public float distance = 50.0f;
 	
 	public float  xSpeed = 250.0f;
 	public float  ySpeed = 120.0f;
-	
+	public float zoomSpeed = 2;
+
 	public float  yMinLimit = -20;
 	public float  yMaxLimit = 80;
 	
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate () {
 		x += Input.GetAxis("Horizontal") * xSpeed * 0.02f;
 		y -= Input.GetAxis("Vertical") * ySpeed * 0.02f;
-		Debug.Log (Input.GetAxis("Mouse X"));
+		distance += Input.GetAxis("Depth") * zoomSpeed;
 		y = ClampAngle(y, yMinLimit, yMaxLimit);
 		
 		var rotation = Quaternion.Euler(y, x, 0);
@@ -35,8 +36,6 @@ public class CameraController : MonoBehaviour {
 		
 		transform.rotation = rotation;
 		transform.position = position;
-
-		Debug.Log("x " + x + "  y" + y);
 	}
 	
 	static float ClampAngle (float angle, float min, float max) {

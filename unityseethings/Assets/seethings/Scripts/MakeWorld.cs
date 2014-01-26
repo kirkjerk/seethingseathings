@@ -46,9 +46,9 @@ public class MakeWorld : MonoBehaviour {
 	}
 
 	Vector3 randomPosition(){
-		return new Vector3(Random.Range(-MAX_START_LOC,MAX_START_LOC),
-		            Random.Range(-MAX_START_LOC,MAX_START_LOC),
-		            Random.Range(-MAX_START_LOC,MAX_START_LOC));
+		return new Vector3(Random.Range(-MAX_START_LOC*5,MAX_START_LOC*5),
+		            Random.Range(-MAX_START_LOC,MAX_START_LOC*5),
+		            Random.Range(-MAX_START_LOC*5,MAX_START_LOC*5));
 	}
 
 	protected string numKeys = "1234567890";

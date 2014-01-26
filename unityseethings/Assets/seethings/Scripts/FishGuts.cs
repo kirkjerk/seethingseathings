@@ -52,6 +52,9 @@ public class FishGuts : MonoBehaviour {
 		if( Random.Range(0f,100.0f) < PERCENTCHANCETOKICK){
 			Vector3 deltaFromTarget = getTargetLocation() - this.transform.position;
 			Vector3 desiredKick = deltaFromTarget *  KICKFORCE;
+
+			//Debug.Log(desiredKick.magnitude);
+
 			this.rigidbody.AddForce(desiredKick,ForceMode.VelocityChange);
 			if(myFishViz) myFishViz.setFacing(desiredKick);
 		} 

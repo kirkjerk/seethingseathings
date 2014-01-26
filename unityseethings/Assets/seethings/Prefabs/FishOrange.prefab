@@ -209,7 +209,7 @@ Rigidbody:
   m_GameObject: {fileID: 100006}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 4
+  m_Drag: 2
   m_AngularDrag: .0500000007
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -238,11 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fa78a25bbf48128f2d2d5347cfd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KICKFORCE: 1
-  PERCENTCHANCETOKICK: 10
-  MAXSPEEDTOTRIGGERKICK: 1
-  STRENGTH_OF_SCARE: 10
-  target: {fileID: 0}
+  targetTransform: {fileID: 0}
   myFishViz: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:

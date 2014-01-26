@@ -49,10 +49,10 @@ public class CameraController : MonoBehaviour {
 		rotationVector.y += Input.GetAxis("Horizontal");
 		transform.rotation = Quaternion.Euler(rotationVector);
 
-		driftUpDown -= .005f;
+		driftUpDown -= .0025f;
 
 		if (Input.GetKeyDown ("space")) {
-			driftUpDown += .25f;	
+			driftUpDown += .125f;	
 		}
 
 		Vector3 driftUpDownVector = new Vector3 (0, driftUpDown, 0);

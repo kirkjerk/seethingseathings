@@ -60,6 +60,11 @@ public class MakeWorld : MonoBehaviour {
 				beacon.transform.position = Camera.main.transform.position;
 
 			}
+			if(Input.GetKey(numKeys.Substring(i,1))){
+				BeaconGuts beacon = beacons[i];
+				beacon.transform.position += Camera.main.transform.rotation * Vector3.forward;
+
+			}
 		}
 
 	}

@@ -9,43 +9,52 @@ public class Formation : MonoBehaviour {
 	public float NextTargetUpdate = float.MinValue;
 	public string FishTag = "Formation Blue";
 
+	Queue<Transform> SpheresRemaining = new Queue<Transform>();
+	List<GameObject> FishRemaining = new List<GameObject>();
+	int FishPerSphere = 0;
+
 	// Update is called once per frame
 	void Update () {
+
+		if (SpheresRemaining.Count > 0)
+		{
+			// Assign spaces for the next sphere
+			Transform sphere = SpheresRemaining.Dequeue();
+			FishRemaining.Sort( (a,b) => orderByIncreasingDistance(sphere.position, a,b) );
+
+			foreach( GameObject fish in FishRemaining.Take(FishPerSphere) )
+			{
+				FishGuts guts = fish.GetComponent<FishGuts>();
+				if (guts)
+				{
+					guts.FormationTarget = sphere;
+				}
+			}
+			
+			FishRemaining.RemoveRange(0, FishPerSphere);
+			return;
+		}
+
 		if (Time.time > NextTargetUpdate)
 		{
 			NextTargetUpdate = Time.time + SecondsBetweenTargetUpdates;
 
 			GameObject[] fishes = GameObject.FindGameObjectsWithTag(FishTag);
-			List<GameObject> remaining_fish = new List<GameObject>(fishes);
+			FishRemaining.Clear();
+			FishRemaining.AddRange( fishes );
 
-			int fish_per_child = fishes.Length / transform.childCount;
+			FishPerSphere = fishes.Length / transform.childCount;
 
 			List<Transform> children = new List<Transform>();  
 			foreach(Transform child in this.transform)
 				children.Add(child);
-			List<Transform> randomized_children = new List<Transform>();
+
+			SpheresRemaining.Clear();
 			while(children.Count > 0)
 			{
 				int index = Random.Range(0,children.Count);
-				randomized_children.Add(children[index]);
+				SpheresRemaining.Enqueue(children[index]);
 				children.RemoveAt(index);
-			}
-
-			foreach (Transform child in randomized_children)
-			{
-				// Want the N closest fish
-				remaining_fish.Sort( (a,b) => orderByIncreasingDistance(child.position, a,b) );
-
-				foreach( GameObject fish in remaining_fish.Take(fish_per_child) )
-				{
-					FishGuts guts = fish.GetComponent<FishGuts>();
-					if (guts)
-					{
-						guts.FormationTarget = child;
-					}
-				}
-
-				remaining_fish.RemoveRange(0, fish_per_child);
 			}
 		}
 	

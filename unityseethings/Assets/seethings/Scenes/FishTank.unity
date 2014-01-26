@@ -164,12 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc30be4e560845289b4456e0003df29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NUM_FISH_START: 400
+  NUM_FISH_START: 120
   MAX_START_LOC: 10
   fishPrefabs:
-  - {fileID: 11400000, guid: bce6f112e59b440e685bb66d7a873dd1, type: 2}
-  - {fileID: 11400000, guid: 71ff741578fa0b041b7a398f0f21ae8a, type: 2}
-  - {fileID: 11400000, guid: b46009274ecc44066b5b73e5d39432a8, type: 2}
+  - {fileID: 11400002, guid: 1a183584aa2568a46837aaeaf05b3f2b, type: 2}
+  - {fileID: 11400002, guid: 1cc5d0b8135271746b88d02457776b3f, type: 2}
+  - {fileID: 11400002, guid: 4585ea14f409da24aa0ed97bd668d396, type: 2}
+  - {fileID: 11400002, guid: ba91830f50673bb42a0b48da682f1559, type: 2}
 --- !u!4 &1327651717
 Transform:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ GameObject:
   - 92: {fileID: 1493773140}
   - 124: {fileID: 1493773139}
   - 81: {fileID: 1493773138}
+  - 114: {fileID: 1493773143}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -269,7 +271,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1493773137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -41.0678329}
+  m_LocalPosition: {x: .159475327, y: 6.38011456, z: -41.0678329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1493773143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1493773137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc0924061a65c4a8d843bbd895db84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  distance: 50
+  xSpeed: 250
+  ySpeed: 120
+  zoomSpeed: 2
+  yMinLimit: -20
+  yMaxLimit: 80

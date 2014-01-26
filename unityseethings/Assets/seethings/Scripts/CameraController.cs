@@ -26,16 +26,27 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	void LateUpdate () {
-		x += Input.GetAxis("Horizontal") * xSpeed * 0.02f;
-		y -= Input.GetAxis("Vertical") * ySpeed * 0.02f;
-		distance += Input.GetAxis("Depth") * zoomSpeed;
-		y = ClampAngle(y, yMinLimit, yMaxLimit);
-		
+		/*
+		 x += Input.GetAxis("Horizontal") * xSpeed * 0.02f;
+		//y -= Input.GetAxis("Vertical") * ySpeed * 0.02f;
+		//distance += Input.GetAxis("Depth") * zoomSpeed;
+		//y = ClampAngle(y, yMinLimit, yMaxLimit);
+
+		distance -= Input.GetAxis("Vertical") * zoomSpeed;
+
 		var rotation = Quaternion.Euler(y, x, 0);
 		var position = rotation * new Vector3(0, 0, -distance) + getTargetPosition();
 		
 		transform.rotation = rotation;
 		transform.position = position;
+		*/
+
+		Vector3 rotationVector = transform.rotation.eulerAngles;
+		rotationVector.y += Input.GetAxis("Horizontal");
+		transform.rotation = Quaternion.Euler(rotationVector);
+
+		transform.position = transform.position + (transform.rotation *  (Vector3.forward * Input.GetAxis("Vertical")));
+
 	}
 	
 	static float ClampAngle (float angle, float min, float max) {

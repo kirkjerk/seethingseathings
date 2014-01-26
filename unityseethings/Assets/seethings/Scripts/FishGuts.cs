@@ -7,13 +7,13 @@ using System.Collections;
 public class FishGuts : MonoBehaviour {
 
 	
-	public float KICKFORCE = .04f;
-	public float PERCENTCHANCETOKICK = 10;
-	public float MAXSPEEDTOTRIGGERKICK = 1;
+	protected float KICKFORCE = 2.0f;
+	protected float PERCENTCHANCETOKICK = 30;
+	protected float MAXSPEEDTOTRIGGERKICK = 1;
 
-	public float STRENGTH_OF_SCARE = 10;
+	protected float STRENGTH_OF_SCARE = 20;
 
-	public float RANDOM_GOAL_BOUNDS = 50;
+	protected float RANDOM_GOAL_BOUNDS = 15;
 
 	public Transform target = null;
 

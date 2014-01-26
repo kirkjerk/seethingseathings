@@ -85,11 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fa78a25bbf48128f2d2d5347cfd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KICKFORCE: 1
-  PERCENTCHANCETOKICK: 10
-  MAXSPEEDTOTRIGGERKICK: 1
-  STRENGTH_OF_SCARE: 30
-  RANDOM_GOAL_BOUNDS: 15
   target: {fileID: 0}
   myFishViz: {fileID: 0}
 --- !u!135 &13500000
@@ -102,7 +97,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

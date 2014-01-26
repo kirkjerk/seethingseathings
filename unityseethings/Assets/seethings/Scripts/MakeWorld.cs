@@ -30,7 +30,7 @@ public class MakeWorld : MonoBehaviour {
 
 				newFish.transform.position = new Vector3(Random.Range(-MAX_START_LOC,MAX_START_LOC),
 				                                             Random.Range(-MAX_START_LOC,MAX_START_LOC),
-				                                            0);
+				                                         Random.Range(-MAX_START_LOC,MAX_START_LOC));
 				fishAdded.Add(newFish);
 			}
 		}

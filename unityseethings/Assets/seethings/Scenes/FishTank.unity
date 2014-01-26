@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc30be4e560845289b4456e0003df29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NUM_FISH_START: 300
+  NUM_FISH_START: 400
   MAX_START_LOC: 10
   fishPrefabs:
   - {fileID: 11400000, guid: bce6f112e59b440e685bb66d7a873dd1, type: 2}

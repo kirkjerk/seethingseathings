@@ -15,27 +15,33 @@ public class FishGuts : MonoBehaviour {
 
 	protected float RANDOM_GOAL_BOUNDS = 15;
 
-	public Transform target = null;
+	public Transform targetTransform = null;
 
 	public FishViz myFishViz;
 
-	protected Vector3 randomGoal;
+	//protected Vector3 randomGoal;
+
+
 
 	// Use this for initialization
 	void Start () {
 		myFishViz = this.gameObject.GetComponentInChildren<FishViz> ();
-		setGoalRandomly ();
+	//	setGoalRandomly ();
 	}
 
-	void setGoalRandomly(){
+	/*void setGoalRandomly(){
 			randomGoal = new Vector3 (Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS),
 		                          Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS),
 		                          Random.Range(-RANDOM_GOAL_BOUNDS,RANDOM_GOAL_BOUNDS));
-		}
+		}*/
 
 	// Update is called once per frame
 	void Update () {
 		checkKick ();
+	}
+
+	public void setBeacon(BeaconGuts beacon){
+		targetTransform = beacon.transform;
 	}
 
 	void checkKick(){
@@ -52,10 +58,10 @@ public class FishGuts : MonoBehaviour {
 	}
 	
 	Vector3 getTargetLocation(){
-		if(target == null){
-			return randomGoal;
+		if(targetTransform == null){
+			return new Vector3(0,0,0);
 		}   else {
-			return target.position;
+			return targetTransform.position;
 		}
 	}
 
@@ -74,7 +80,7 @@ public class FishGuts : MonoBehaviour {
 		this.rigidbody.AddForce(vectorAwayFromClick,ForceMode.VelocityChange);
 		if(myFishViz)myFishViz.setFacing(vectorAwayFromClick);
 
-		setGoalRandomly ();
+	//	setGoalRandomly ();
 	}
 
 	

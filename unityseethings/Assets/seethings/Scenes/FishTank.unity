@@ -136,6 +136,70 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &1220876625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1220876628}
+  - 114: {fileID: 1220876627}
+  - 154: {fileID: 1220876626}
+  m_Layer: 0
+  m_Name: Terrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!154 &1220876626
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220876625}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: 65ba96eb9a60ccb4aad3db9d032441e4, type: 2}
+  m_CreateTreeColliders: 1
+--- !u!114 &1220876627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220876625}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12000, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TerrainData: {fileID: 15600000, guid: 65ba96eb9a60ccb4aad3db9d032441e4, type: 2}
+  m_TreeDistance: 2000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_CastShadows: 1
+  m_LightmapIndex: -1
+  m_LightmapSize: 1024
+  m_DrawTreesAndFoliage: 1
+  m_MaterialTemplate: {fileID: 0}
+--- !u!4 &1220876628
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220876625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -200, y: -50, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1327651715
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,13 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc30be4e560845289b4456e0003df29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NUM_FISH_START: 120
+  NUM_FISH_START: 150
   MAX_START_LOC: 10
   fishPrefabs:
   - {fileID: 11400002, guid: 1a183584aa2568a46837aaeaf05b3f2b, type: 2}
   - {fileID: 11400002, guid: 1cc5d0b8135271746b88d02457776b3f, type: 2}
   - {fileID: 11400002, guid: 4585ea14f409da24aa0ed97bd668d396, type: 2}
   - {fileID: 11400002, guid: ba91830f50673bb42a0b48da682f1559, type: 2}
+  beaconPrefab: {fileID: 11400000, guid: e1d3f72043fc646ce8e0a1f6208f11ad, type: 2}
 --- !u!4 &1327651717
 Transform:
   m_ObjectHideFlags: 0
@@ -291,5 +356,3 @@ MonoBehaviour:
   xSpeed: 250
   ySpeed: 120
   zoomSpeed: 2
-  yMinLimit: -20
-  yMaxLimit: 80

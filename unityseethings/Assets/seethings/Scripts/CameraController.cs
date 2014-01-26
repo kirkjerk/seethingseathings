@@ -9,15 +9,17 @@ public class CameraController : MonoBehaviour {
 	public float  ySpeed = 120.0f;
 	public float zoomSpeed = 2;
 
-	public float  yMinLimit = -20;
-	public float  yMaxLimit = 80;
+	protected float  yMinLimit = -45;
+	protected float  yMaxLimit = 45;
 	
-	private float x = 0;
+//	private float x = 0;
 	private float y = 0;
+
+	float driftUpDown = 0.0f;
 	
 	void Start () {
 		var angles = transform.eulerAngles;
-		x = angles.y;
+		//x = angles.y;
 		y = angles.x;
 		
 		// Make the rigid body not change rotation
@@ -26,26 +28,48 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	void LateUpdate () {
-		/*
-		 x += Input.GetAxis("Horizontal") * xSpeed * 0.02f;
-		//y -= Input.GetAxis("Vertical") * ySpeed * 0.02f;
+
+		// x += Input.GetAxis("Horizontal") * xSpeed * 0.02f;
 		//distance += Input.GetAxis("Depth") * zoomSpeed;
+		//y += Input.GetAxis("Depth") * ySpeed * 0.02f;
 		//y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-		distance -= Input.GetAxis("Vertical") * zoomSpeed;
+		//Debug.Log ("y is "+y);
 
-		var rotation = Quaternion.Euler(y, x, 0);
-		var position = rotation * new Vector3(0, 0, -distance) + getTargetPosition();
+		//distance -= Input.GetAxis("Vertical") * zoomSpeed;
+
+		//transform.rotation = Quaternion.Euler(y, transform.rotation.eulerAngles.x, 0);
+		//var position = rotation * new Vector3(0, 0, -distance) + getTargetPosition();
 		
-		transform.rotation = rotation;
-		transform.position = position;
-		*/
+		//transform.rotation = rotation;
+		//transform.position = position;
+
 
 		Vector3 rotationVector = transform.rotation.eulerAngles;
 		rotationVector.y += Input.GetAxis("Horizontal");
 		transform.rotation = Quaternion.Euler(rotationVector);
 
-		transform.position = transform.position + (transform.rotation *  (Vector3.forward * Input.GetAxis("Vertical")));
+		driftUpDown -= .005f;
+
+		if (Input.GetKeyDown ("space")) {
+			driftUpDown += .25f;	
+		}
+
+		Vector3 driftUpDownVector = new Vector3 (0, driftUpDown, 0);
+	
+
+		transform.position = transform.position +  driftUpDownVector + 
+			(transform.rotation *  (Vector3.forward * Input.GetAxis("Vertical")));
+
+		float terrainHeight = Terrain.activeTerrain.SampleHeight (transform.position) 
+						+ Terrain.activeTerrain.transform.position.y
+						+ 10.0f;
+		if (transform.position.y < terrainHeight) {
+			driftUpDown = 0;
+			transform.position = new Vector3 (transform.position.x, terrainHeight, transform.position.z);
+		} else {
+			transform.position = new Vector3 (transform.position.x, transform.position.y + driftUpDown, transform.position.z);
+		}
 
 	}
 	

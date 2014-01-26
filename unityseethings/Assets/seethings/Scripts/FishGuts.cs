@@ -16,7 +16,7 @@ public class FishGuts : MonoBehaviour {
 	protected float RANDOM_GOAL_BOUNDS = 15;
 
 	public Transform targetTransform = null;
-
+	public Transform FormationTarget = null;
 	public FishViz myFishViz;
 
 	//protected Vector3 randomGoal;
@@ -61,6 +61,20 @@ public class FishGuts : MonoBehaviour {
 	}
 	
 	Vector3 getTargetLocation(){
+		if (FormationTarget) {
+			// Are we already close enough to the target?
+			Vector3 to_target = this.transform.position - FormationTarget.transform.position;
+			float d2 = to_target.sqrMagnitude;
+			float size2 = FormationTarget.lossyScale.x * FormationTarget.lossyScale.x;
+			if (d2 < size2) {
+				// We are already inside our target! Yay!  Just bop around a little.
+				return this.transform.position + Random.insideUnitSphere * 4;
+			}
+
+			// Not inside target!  Try to get there.
+			return FormationTarget.position + Random.insideUnitSphere * FormationTarget.lossyScale.x;
+		}
+
 		if(targetTransform == null){
 			return new Vector3(0,0,0);
 		}   else {

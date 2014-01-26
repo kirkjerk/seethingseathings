@@ -7,6 +7,7 @@ public class MakeWorld : MonoBehaviour {
 	public int NUM_FISH_START = 40;
 	public float MAX_START_LOC = 200;
 
+	public AudioSource throwSound;
 
 	//public FishGuts fishPrefab;
 
@@ -58,6 +59,8 @@ public class MakeWorld : MonoBehaviour {
 			if(Input.GetKeyDown(numKeys.Substring(i,1))){
 				BeaconGuts beacon = beacons[i];
 				beacon.transform.position = Camera.main.transform.position;
+
+				throwSound.Play();
 
 			}
 			if(Input.GetKey(numKeys.Substring(i,1))){
